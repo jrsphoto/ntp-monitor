@@ -1,16 +1,16 @@
-# NTP Monitor Configuration
+# NTP Monitor Configuration Template
 import os
 
 # NTP Server Configuration
-NTP_SERVER = "my.ntp-server.lan"
-POLLING_INTERVAL = 60  # seconds
+NTP_SERVER = os.getenv('NTP_SERVER', 'pool.ntp.org')
+POLLING_INTERVAL = int(os.getenv('POLLING_INTERVAL', '60'))
 MAX_POINTS = 1000
 
 # InfluxDB Configuration
 INFLUX_CONFIG = {
-    'url': os.getenv('INFLUX_URL', 'http://my_influxdb_ip:8086'),
-    'token': os.getenv('INFLUX_TOKEN', my_influxdb_token'),
-    'org': os.getenv('INFLUX_ORG', 'my_influxdb_org'),
+    'url': os.getenv('INFLUX_URL', 'http://localhost:8086'),
+    'token': os.getenv('INFLUX_TOKEN', ''),
+    'org': os.getenv('INFLUX_ORG', 'your-org'),
     'bucket': os.getenv('INFLUX_BUCKET', 'ntp-monitoring')
 }
 
@@ -20,5 +20,5 @@ CSV_FILE = os.path.join(DATA_DIR, "ntp_metrics.csv")
 PLOT_FILE = os.path.join(DATA_DIR, "ntp_metrics.png")
 
 # Logging Configuration
-LOG_LEVEL = "INFO"
+LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 LOG_FILE = "/var/log/ntp-monitor/ntp-monitor.log"
