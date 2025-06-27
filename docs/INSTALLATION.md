@@ -1,4 +1,4 @@
-## docs/INSTALLATION.md
+## INSTALLATION.md
 ```markdown
 # Installation Guide
 
